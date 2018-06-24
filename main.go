@@ -15,6 +15,11 @@ import (
 	"strings"
 )
 
+var (
+	// Version is the utility version
+	Version = "0.1.0"
+)
+
 type packagesFile struct {
 	Dependencies map[string]string `json:"dependencies"`
 }
@@ -28,7 +33,7 @@ func main() {
 	flag.Parse()
 
 	if *showVersion {
-		fmt.Println("0.1.0")
+		fmt.Println(Version)
 		os.Exit(0)
 	}
 
