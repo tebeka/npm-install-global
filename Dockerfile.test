@@ -1,0 +1,8 @@
+FROM node:10-alpine
+
+WORKDIR /test
+COPY npm-install-global .
+COPY package.json .
+
+RUN ./npm-install-global < package.json
+RUN test -f /usr/local/lib/node_modules/moment/moment.js
