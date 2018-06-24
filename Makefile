@@ -1,7 +1,7 @@
 version := $(shell egrep -o '[0-9]+\.[0-9]+\.[0-9]+' main.go)
-os=$(shell go env GOOS)
-arch=$(shell go env GOARCH)
-out=npm-install-global
+os = $(shell go env GOOS)
+arch = $(shell go env GOARCH)
+out = npm-install-global
 
 all:
 	$(error pick a target)
@@ -9,9 +9,8 @@ all:
 test:
 	go test -v
 
-
 build:
 	GOOS=darwin go build
-	bzip2 -c $(out) > nig-$(version)-darwin-$(arch).bz2
+	gzip -c $(out) > nig-$(version)-darwin-$(arch).gz
 	go build
-	bzip2 -c $(out) > nig-$(version)-$(os)-$(arch).bz2
+	gzip -c $(out) > nig-$(version)-$(os)-$(arch).gz
