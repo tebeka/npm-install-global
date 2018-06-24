@@ -20,12 +20,17 @@ type packagesFile struct {
 }
 
 func main() {
+	showVersion := flag.Bool("version", false, "show version and exit")
 	flag.Usage = func() {
-		fmt.Fprintf(flag.CommandLine.Output(), "usage: %s [FILE]\n", os.Args[0])
+		fmt.Fprintf(flag.CommandLine.Output(), "usage: %s [FILE] [options]\n", os.Args[0])
 		flag.PrintDefaults()
 	}
-
 	flag.Parse()
+
+	if *showVersion {
+		fmt.Println("0.1.0")
+		os.Exit(0)
+	}
 
 	var inFile io.Reader
 
